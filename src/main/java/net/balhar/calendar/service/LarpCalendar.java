@@ -1,5 +1,6 @@
 package net.balhar.calendar.service;
 
+import net.balhar.calendar.frontend.Provider;
 import net.balhar.calendar.frontend.annotation.Create;
 import net.balhar.calendar.frontend.annotation.Delete;
 import net.balhar.calendar.frontend.annotation.ResourceCollection;
@@ -18,7 +19,7 @@ import static java.util.stream.Collectors.toList;
  * configured differently.
  */
 @Service
-public class LarpCalendar implements Calendar {
+public class LarpCalendar implements Calendar, Provider {
     private Set<Event> allEvents;
     private Adapter<Event> persistentStore;
 

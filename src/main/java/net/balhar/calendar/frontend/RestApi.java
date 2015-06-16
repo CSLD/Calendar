@@ -15,6 +15,7 @@ public class RestApi<ITEM> implements Api<ITEM> {
     public RestApi(Provider serviceProvider, String basePath) {
         this.serviceProvider = serviceProvider;
         this.basePath = basePath;
+        // Dynamically specify the paths based on the metaData, probably will seriously have to do this.
     }
 
     @Override
