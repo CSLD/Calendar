@@ -3,6 +3,8 @@ package net.balhar.calendar.frontend;
 import net.balhar.jsonapi.Document;
 import org.springframework.http.ResponseEntity;
 
+import java.lang.reflect.InvocationTargetException;
+
 /**
  * It is adapter which provides functionality to expose everything the service does as a simple endpoint with resources
  * and hateoas like information defined in jsonAPI project.
@@ -16,20 +18,30 @@ public interface Api<ITEM> {
      * @param configuration Configuration of restrictions on retrieved items.
      * @return Json Api Document representation of the items.
      */
-    ResponseEntity<Document> collection(Configuration configuration);
+    ResponseEntity<Document> collection(Configuration configuration) throws InvocationTargetException,
+            IllegalAccessException;
 
     /**
      * Creates passed in item. In case of user not having correct rights return 403, If the same item already exists
-     * return 400. In case of validation error return 400 with additional information about validation errors.
+     * return 400. In case of validation error return 400 with additional information about validation errors. In correct
+     * case it returns 201.
      *
      * @param toCreate Item to be created.
-     * @return Document containing created item.
+     * @return Document containing created item and CREATED
      */
     ResponseEntity<Document> create(ITEM toCreate);
 
     /**
+     * It retrieves item with given uuid. If there is no such item present, it returns 404 Not found code.
+     *
+     * @param uuid Uuid of the item to retrieve.
+     * @return Document containing retrieved item.
+     */
+    ResponseEntity<Document> single(String uuid);
+
+    /**
      * It allows updating resource with given uuid. If there is no such resource return 404, if the user doesn't have
-     * rights return 404. If validation fails return 400 with additional information about why it failed.
+     * rights return 403. If validation fails return 400 with additional information about why it failed.
      * This method works as a PATCH allowing you to modify any part of the resource by changing the data you send.
      *
      * @param uuid        Uuid of the item to be modified.

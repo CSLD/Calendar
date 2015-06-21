@@ -33,7 +33,7 @@ public class LarpCalendar implements Calendar, Provider {
 
     @Override
     @ResourceCollection
-    public Collection<Event> events(Configuration options) {
+    public synchronized Collection<Event> events(Configuration options) {
         return allEvents.stream()
                 .filter(event -> options.from() == null || event.from().isAfter(options.from()))
                 .filter(event -> options.to() == null || event.to().isBefore(options.to()))
@@ -42,18 +42,18 @@ public class LarpCalendar implements Calendar, Provider {
     }
 
     @Override
-    public Collection<Event> events() {
+    public synchronized Collection<Event> events() {
         return allEvents;
     }
 
     @Override
-    public boolean contains(Event event) {
+    public synchronized boolean contains(Event event) {
         return allEvents.contains(event);
     }
 
     @Override
     @Create
-    public Calendar add(Event event) {
+    public synchronized Calendar add(Event event) {
         assertEventIsNotPresent(event);
 
         allEvents.add(event);
@@ -70,7 +70,7 @@ public class LarpCalendar implements Calendar, Provider {
 
     @Override
     @Delete
-    public Calendar remove(Event event) {
+    public synchronized Calendar remove(Event event) {
         assertEventIsPresent(event);
 
         allEvents.remove(event);

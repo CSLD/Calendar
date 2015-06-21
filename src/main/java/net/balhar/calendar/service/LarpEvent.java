@@ -1,6 +1,7 @@
 package net.balhar.calendar.service;
 
 import net.balhar.calendar.persistence.LocalDateTimePersistenceConverter;
+import net.balhar.jsonapi.Identifiable;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -10,7 +11,7 @@ import java.time.LocalDateTime;
  */
 @Entity(name = "event")
 @Table(name = "event", schema = "public", catalog = "")
-public class LarpEvent implements Event {
+public class LarpEvent implements Event, Identifiable {
     @Column(name = "uuid")
     @Basic
     @Id
@@ -38,6 +39,11 @@ public class LarpEvent implements Event {
     @Override
     public String uuid() {
         return uuid;
+    }
+
+    @Override
+    public String getUuid() {
+        return uuid();
     }
 
     @Override

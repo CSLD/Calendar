@@ -19,6 +19,13 @@
         <!-- lookup parent from repository -->
     </parent>
 
+    <repositories>
+        <repository>
+            <id>jitpack.io</id>
+            <url>https://jitpack.io</url>
+        </repository>
+    </repositories>
+
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <start-class>net.balhar.calendar.LarpCalendarApplication</start-class>
@@ -40,9 +47,9 @@
         </dependency>
 
         <dependency>
-            <groupId>net.balhar.jsonapi</groupId>
-            <artifactId>jsonapi</artifactId>
-            <version>0.11</version>
+            <groupId>com.github.balhar-jakub</groupId>
+            <artifactId>jsonapi-java</artifactId>
+            <version>0.15</version>
         </dependency>
 
         <dependency>
