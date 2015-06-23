@@ -1,9 +1,5 @@
 package net.balhar.calendar.service;
 
-import net.balhar.calendar.frontend.Provider;
-import net.balhar.calendar.frontend.annotation.Create;
-import net.balhar.calendar.frontend.annotation.Delete;
-import net.balhar.calendar.frontend.annotation.ResourceCollection;
 import net.balhar.calendar.persistence.Adapter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,7 +15,7 @@ import static java.util.stream.Collectors.toList;
  * configured differently.
  */
 @Service
-public class LarpCalendar implements Calendar, Provider {
+public class LarpCalendar implements Calendar {
     private Set<Event> allEvents;
     private Adapter<Event> persistentStore;
 
@@ -32,7 +28,6 @@ public class LarpCalendar implements Calendar, Provider {
     }
 
     @Override
-    @ResourceCollection
     public synchronized Collection<Event> events(Configuration options) {
         return allEvents.stream()
                 .filter(event -> options.from() == null || event.from().isAfter(options.from()))
@@ -52,7 +47,6 @@ public class LarpCalendar implements Calendar, Provider {
     }
 
     @Override
-    @Create
     public synchronized Calendar add(Event event) {
         assertEventIsNotPresent(event);
 
@@ -69,7 +63,6 @@ public class LarpCalendar implements Calendar, Provider {
     }
 
     @Override
-    @Delete
     public synchronized Calendar remove(Event event) {
         assertEventIsPresent(event);
 
