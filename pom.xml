@@ -48,8 +48,8 @@
 
         <dependency>
             <groupId>com.github.balhar-jakub</groupId>
-            <artifactId>jsonapi-java</artifactId>
-            <version>0.15</version>
+            <artifactId>rest-commons</artifactId>
+            <version>0.4</version>
         </dependency>
 
 

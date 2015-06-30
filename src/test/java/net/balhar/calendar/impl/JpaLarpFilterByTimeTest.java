@@ -3,9 +3,9 @@ package net.balhar.calendar.impl;
 import com.github.springtestdbunit.annotation.DatabaseOperation;
 import com.github.springtestdbunit.annotation.DatabaseSetup;
 import net.balhar.calendar.FilterByTimeTest;
-import net.balhar.calendar.persistence.Adapter;
 import net.balhar.calendar.service.LarpCalendar;
 import net.balhar.calendar.service.LarpEvent;
+import net.balhar.persistence.Adapter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 

@@ -5,7 +5,7 @@ import java.time.LocalDateTime;
 /**
  * Every configuration passable to Calendar must contain all methods from Event as a way to filter Events.
  */
-public interface Configuration extends Event {
+public interface Configuration extends Event, net.balhar.api.Configuration {
     /**
      * Fluent api method used to set from bound.
      *

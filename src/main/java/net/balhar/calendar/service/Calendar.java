@@ -23,6 +23,16 @@ public interface Calendar {
     Calendar remove(Event event);
 
     /**
+     * It updates event in calendar to update event. Possible implementation is through removing current event and
+     * replacing it with the new one.
+     *
+     * @param uuid Uuid of the event to update.
+     * @param update Data to replace event with given uuid with.
+     * @return
+     */
+    Calendar update(String uuid, Event update);
+
+    /**
      * It returns all events between two dates. If there is no event in given date range, return empty collection. It is
      * one of the terminal operations to the chain.
      *

@@ -64,4 +64,9 @@ public class LarpConfiguration implements Configuration {
     public String location() {
         return location;
     }
+
+    @Override
+    public String getUuid() {
+        return uuid;
+    }
 }

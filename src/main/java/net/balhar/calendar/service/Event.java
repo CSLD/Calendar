@@ -1,11 +1,13 @@
 package net.balhar.calendar.service;
 
+import net.balhar.jsonapi.Identifiable;
+
 import java.time.LocalDateTime;
 
 /**
  * Common interface for all events. Any user of this package can provide its own implementation of an Event.
  */
-public interface Event {
+public interface Event extends Identifiable {
     /**
      * Unique identifier of an event.
      *

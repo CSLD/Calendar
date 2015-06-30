@@ -1,7 +1,7 @@
 package net.balhar.calendar.service;
 
-import net.balhar.calendar.persistence.LocalDateTimePersistenceConverter;
 import net.balhar.jsonapi.Identifiable;
+import net.balhar.persistence.LocalDateTimePersistenceConverter;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
